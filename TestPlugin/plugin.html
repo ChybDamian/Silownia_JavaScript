@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>JavaScript</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-2">
+		<meta name="author" content="Filip Zygoń" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		
+		<script type="text/javascript">
+			  
+			$(document).ready(function(){
+			
+					$(function($){
+						(function() { 
+							$.fn.zmianaKoloru = function() {
+								return this.each(function() { 
+									$(this).one('click',function(){
+										//t - zmienna ta pozwala użyć klikniętego elementu w callbacku .animate
+										var t = $(this);
+										//this w callbacku .animate nie jest tym samym co this w klilkniętym elemencie
+										$(this).css({'background-color' : 'teal'}).animate({'background-color' : 'teal', 'width' : '50px', 'height' : '50px','opacity' : '0.2'});
+										 $(function() {
+												var degree = 0;
+												setInterval(function(){
+													// Chrome
+													t.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+													// Firefox
+													t.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+													// Opera
+													t.css({ '-o-transform': 'rotate(' + degree + 'deg)'});
+													// Animacja
+													degree++;
+												},65);
+											});
+									});
+								});
+							};
+					})(jQuery);   
+       
+				$(".tlo").zmianaKoloru();
+			
+				});
+				
+			});
+
+		</script>
+		 
+		<style type="text/css">
+		
+		.tlo
+		{
+		margin:0 auto;
+		margin-top:200px;
+		background-color:gold;
+		width:100px;
+		height:100px;
+		
+		transition: background-color .50s ease-in-out;
+	 -moz-transition: background-color .50s ease-in-out;
+	 -webkit-transition: background-color .50s ease-in-out;
+	 -o-transition: background-color .50s ease-in-out;
+	 	
+		transition: width .50s ease-in-out;
+	 -moz-transition: width .50s ease-in-out;
+	 -webkit-transition: width .50s ease-in-out;
+	 -o-transition: width .50s ease-in-out;
+	 
+	 	transition: height .50s ease-in-out;
+	 -moz-transition: height .50s ease-in-out;
+	 -webkit-transition: height .50s ease-in-out;
+	 -o-transition: height .50s ease-in-out;
+	 
+	 	transition: opacity .50s ease-in-out;
+	 -moz-transition: opacity .50s ease-in-out;
+	 -webkit-transition: opacity .50s ease-in-out;
+	 -o-transition: opacity .50s ease-in-out;
+	
+		}
+		</style>
+</head>
+<body>
+		
+	<div class="tlo"></div>	
+</body>
+</html>
